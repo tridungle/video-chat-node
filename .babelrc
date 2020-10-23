@@ -1,0 +1,31 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@config": "./src/config",
+          "@events": "./src/events",
+          "@graphql": "./src/graphql",
+          "@helpers": "./src/helpers",
+          "@middlewares": "./src/middlewares",
+          "@components": "./src/components",
+          "@socket": "./src/socket",
+          "@start": "./src/start"
+        }
+      }
+    ],
+    "@babel/plugin-proposal-class-properties"
+  ]
+}

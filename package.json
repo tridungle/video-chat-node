@@ -1,0 +1,62 @@
+{
+  "name": "video-chat-node",
+  "version": "1.0.0",
+  "description": "A video chat written in JavaScript using React, Node.js, GraphQL, and Socket.io.",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test npm run init && jest --coverage --detectOpenHandles",
+    "test:watch": "NODE_ENV=test jest --watch --coverage",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "dev": "nodemon --exec npx babel-node src/start/graphql-server.js",
+    "lint": "prettier --write '**/*.js' && eslint --fix '**/*.js'",
+    "start": "npm run build && node dist/src/start/server.js",
+    "start-service": "npm run init && npm run migrate && node dist/src/start/server.js",
+    "docs": "./node_modules/jsdoc/jsdoc.js -c ./.jsdoc.conf.json",
+    "migrate": "babel-node ./node_modules/migrate-mongo/bin/migrate-mongo.js up",
+    "rollback": "babel-node ./node_modules/migrate-mongo/bin/migrate-mongo.js down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tridungle/video-chat-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tridungle/video-chat-node/issues"
+  },
+  "homepage": "https://github.com/tridungle/video-chat-node#readme",
+  "dependencies": {
+    "@apollo/federation": "^0.20.4",
+    "apollo-server-express": "^2.18.2",
+    "aws-sdk": "^2.777.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookies": "^0.8.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dns": "^0.2.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "graphql-scalars": "^1.4.1",
+    "graphql-tools": "^6.2.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.9",
+    "rimraf": "^3.0.2",
+    "socket.io": "^2.3.0",
+    "socket.io-redis": "^5.4.0",
+    "socketio-jwt": "^4.6.2",
+    "url": "^0.11.0",
+    "validator": "^13.1.17",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
